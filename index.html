@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo Api</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+      integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <style>
+    .container h1 span {
+      background: -webkit-linear-gradient(
+        left,
+        rgba(0, 0, 255, 0.491),
+        #50c8789b
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    #mark-finished:hover {
+      background: #198754;
+    }
+    .hidden {
+      display: none !important;
+    }
+  </style>
+  <body>
+    <div
+      class="container py-3 mx-auto position-absolute top-50 start-50 translate-middle"
+    >
+      <h1 class="text-center">
+        <span class="">Smatyx</span>
+        Todos App
+      </h1>
+      <div class="pt-5">
+        <div
+          class="d-flex justify-content-center align-items-center gap-3 mx-auto"
+          style="width: 70%"
+        >
+          <div class="position-relative w-75">
+            <input
+              type="text"
+              name="search-todo"
+              class="form-control w-100 p-3 bo"
+              id="search-todo"
+              placeholder="Search Todos"
+            />
+            <button
+              type="button"
+              class="position-absolute btn btn-primary top-50 end-0 translate-middle"
+            >
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+          <button type="submit" class="btn btn-success px-3 py-2" id="add-todo">
+            Add Todos
+          </button>
+        </div>
+      </div>
+      <div class="py-3">
+        <div id="un-finished">
+          <div
+            class="d-flex justify-content-between align-items-center p-4 border rounded border-secondary border-opacity-50 bg-white mt-2 mx-auto"
+            style="width: 62.4%"
+          >
+            <span>Hello</span>
+            <div class="d-flex gap-2">
+              <button
+                class="d-flex justify-content-center align-items-center btn btn-danger"
+                style="width: 40px; height: 40px"
+                id="delete"
+              >
+                <i class="fa-solid fa-trash"></i>
+              </button>
+              <button
+                class="d-flex justify-content-center align-items-center btn btn-primary"
+                style="width: 40px; height: 40px"
+                id="change"
+              >
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <button
+                class="d-flex justify-content-center align-items-center btn btn-secondary"
+                style="width: 40px; height: 40px"
+                id="mark-finished"
+                data-value="finished"
+              >
+                <i class="fa-solid fa-check-to-slot"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="mx-auto mt-2" style="width: 62.4%" id="btn-wrapper">
+          <button
+            class="d-flex gap-2 align-items-center justify-content-between btn btn-secondary px-4 py-2"
+            id="show-finished"
+          >
+            Completed Todo <span></span>
+            <i class="fa-solid fa-circle-right"></i>
+          </button>
+        </div>
+        <div id="finished" class="hidden">
+          <div
+            class="d-flex justify-content-between align-items-center p-4 border rounded border-secondary border-opacity-50 bg-white mt-2 mx-auto"
+            style="width: 62.4%"
+          >
+            <span>Hello</span>
+            <div class="d-flex gap-2">
+              <button
+                class="d-flex justify-content-center align-items-center btn btn-danger"
+                style="width: 40px; height: 40px"
+                id="delete"
+              >
+                <i class="fa-solid fa-trash"></i>
+              </button>
+              <button
+                class="d-flex justify-content-center align-items-center btn btn-primary"
+                style="width: 40px; height: 40px"
+                id="change"
+              >
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <button
+                class="d-flex justify-content-center align-items-center btn btn-success"
+                style="width: 40px; height: 40px"
+                id="unmark-finished"
+                data-value="unfinished"
+              >
+                <i class="fa-solid fa-check-to-slot"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="form-wrapper position-fixed d-flex align-items-center justify-content-center p-4 hidden"
+      style="z-index: 99; inset: 0; background: rgba(0, 0, 0, 0.403)"
+    >
+      <div class="bg-white w-25 rounded" style="overflow: hidden">
+        <form action="" id="form-add" class="shadow">
+          <div class="p-4 w-100">
+            <input
+              type="text"
+              name="todo"
+              class="form-control w-100 p-3"
+              placeholder="Add Todos"
+            />
+            <input type="hidden" name="status" value="unfinished" />
+          </div>
+          <div
+            class="p-4 d-flex justify-content-center align-items-center border border-top"
+          >
+            <button class="btn btn-success px-4 py-2" type="submit">
+              Save
+            </button>
+            <button
+              type="button"
+              class="bg-white btn border ms-3 px-4 py-2"
+              id="close-form"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script type="module" src="js/script.js"></script>
+  </body>
+</html>
