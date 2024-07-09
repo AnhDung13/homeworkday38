@@ -1,3 +1,4 @@
+const todoApiUrl = "https://jnmpf6-8080.csb.app/todos";
 const addTodobtn = document.querySelector("#add-todo");
 const formWrapper = document.querySelector(".form-wrapper");
 const closeForm = document.querySelector("#close-form");
@@ -26,7 +27,6 @@ showFinishBtn.addEventListener("click", () => {
       .classList.replace("fa-circle-down", "fa-circle-right");
   }
 });
-const todoApiUrl = "http://localhost:3000/todos";
 
 const getTodo = async (data) => {
   const response = await fetch(todoApiUrl);
