@@ -1,0 +1,19 @@
+{
+  "todos": [
+    {
+      "todo": "work 1",
+      "status": "unfinished",
+      "id": 1
+    },
+    {
+      "todo": "work 2",
+      "status": "finished",
+      "id": 2
+    },
+    {
+      "todo": "work 3",
+      "status": "finished",
+      "id": 3
+    }
+  ]
+}

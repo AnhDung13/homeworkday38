@@ -1,4 +1,4 @@
-const todoApiUrl = "https://jnmpf6-8080.csb.app/todos";
+const todoApiUrl = "https://dh78cs-8080.csb.app/todos";
 const addTodobtn = document.querySelector("#add-todo");
 const formWrapper = document.querySelector(".form-wrapper");
 const closeForm = document.querySelector("#close-form");
@@ -6,9 +6,8 @@ const showFinishBtn = document.querySelector("#show-finished");
 const unfinished = document.querySelector("#un-finished");
 const finished = document.querySelector("#finished");
 
-addTodobtn.addEventListener("click", (e) => {
+addTodobtn.addEventListener("click", () => {
   formWrapper.classList.remove("hidden");
-  console.log(e.target.dataset.value);
 });
 closeForm.addEventListener("click", () => {
   formWrapper.classList.add("hidden");
